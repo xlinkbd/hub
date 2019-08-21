@@ -13,6 +13,7 @@ find_source_files() {
 
 build_hub() {
   mkdir -p "$(dirname "$1")"
+  echo "go build $MOD_VENDOR_ARG (GO111MODULE=${GO111MODULE}, GOPATH=${GOPATH})" >&2
   go build \
 	  $MOD_VENDOR_ARG \
 	  -ldflags "-X github.com/github/hub/version.Version=`./script/version` $LDFLAGS" \
